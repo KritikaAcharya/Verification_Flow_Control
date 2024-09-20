@@ -17,6 +17,11 @@
   margin-right: 10px;
 }
 
+.code-inputs input.invalid {
+  border: 2px solid red;
+  background-color: #ffeeee;
+}
+
 button {
   padding: 10px 20px;
   font-size: 16px;
