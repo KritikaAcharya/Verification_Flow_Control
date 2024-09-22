@@ -35,7 +35,7 @@ function App() {
     if (validateInputs()) {
       const fullCode = code.join('');
       try {
-        const response = await axios.post('http://localhost:4000/verify', { code: fullCode });
+        const response = await axios.post('http://kritikaacharya.eastus.cloudapp.azure.com:4000/verify', { code: fullCode });
         setIsVerified(true);
       } catch (error) {
         setErrorMessage('Verification Error');
