@@ -6,6 +6,7 @@ function App() {
   const [code, setCode] = useState(Array(6).fill(''));
   const [errorMessage, setErrorMessage] = useState('');
   const [invalidInputs, setInvalidInputs] = useState(Array(6).fill(false));
+  const [isVerified, setIsVerified] = useState(false);
 
   const handleChange = (e, index) => {
     const { value } = e.target;
@@ -35,7 +36,7 @@ function App() {
       const fullCode = code.join('');
       try {
         const response = await axios.post('http://localhost:4000/verify', { code: fullCode });
-        window.location.href = '/success';
+        setIsVerified(true);
       } catch (error) {
         setErrorMessage('Verification Error');
       }
@@ -43,6 +44,15 @@ function App() {
       setErrorMessage('Please fill all inputs with valid numbers');
     }
   };
+
+  if (isVerified) {
+    return (
+      <div className="App">
+        <h1>Verification Successful!</h1>
+        <p>Thank you for verifying your account.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="App">
